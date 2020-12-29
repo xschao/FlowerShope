@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!-- 数据库连接池 dbcp连接池-->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <!-- 连接池的最大数据库连接数 -->
+        <property name="maxActive" value="10" />
+        <!-- 最大空闲数 -->
+        <property name="maxIdle" value="5" />
+    </bean>
+    <!--  配置dbcp的模板  将属性注入其中-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--数据源-->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 引入MyBatis的配置文件 获得SqlSession -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!--别名配置 包扫描-->
+        <property name="typeAliasesPackage" value="cn.jjxy.pojo"/>
+    </bean>
+    <!--第二种方式，配置包扫描 可以将多个接口配置-->
+    <bean id="baseMapper" class="org.mybatis.spring.mapper.MapperScannerConfigurer" >
+        <property name="basePackage" value="cn.jjxy.mapper"/>
+    </bean>
+</beans>

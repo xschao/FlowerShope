@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jjxy.mapper.GetInfoMapper">
+    <resultMap id="getInfoResultMap" type="cn.jjxy.pojo.GetInfo">
+        <!-- id用于映射主键 -->
+        <id property="getInfoID" column="gi_id"/>
+        <!-- 普通属性映射 -->
+        <result property="usersId" column="gi_userId"/>
+        <result property="getInfoName" column="gi_uerName"/>
+        <result property="getInfoTel" column="gi_userTel"/>
+        <result property="getInfoAddress" column="gi_userAddress"/>
+        <result property="getInfoPost" column="gi_uerPost"/>
+    </resultMap>
+
+    <!-- =================================1、通过用户关联查询商品信息表========================================== -->
+    <resultMap id="getInfoResult" type="cn.jjxy.pojo.GetInfo" extends="getInfoResultMap">
+        <!--配置多对一的关系 :引入一的一方属性-->
+        <association property="users" javaType="cn.jjxy.pojo.Users" >
+            <result property="userId" column="u_id"/>
+            <result property="userName" column="u_name"/>
+            <result property="userPsd" column="u_psd"/>
+            <result property="userSex" column="u_sex"/>
+            <result property="UserTel" column="u_tel"/>
+            <result property="userBirthday" column="u_birthday"/>
+            <result property="uerAddress" column="u_address"/>
+        </association>
+    </resultMap>
+    <!-- 1.1、查询当前用下所有的收货信息   -->
+    <!--  SELECT *from `f_users`,f_getinfo  WHERE f_users.u_id = f_getinfo.gi_userId and f_users.u_id=1 -->
+    <select id="list_getInfo" parameterType="int" resultMap="getInfoResult">
+           SELECT *from f_users,f_getinfo  WHERE f_users.u_id = f_getinfo.gi_userId and f_users.u_id= #{id}
+    </select>
+
+    <!--=======================================2、通过订单查询收货人地址========================================================================-->
+    <!-- 2.1、查询当前订单下的收货人细明 -->
+    <select id="getGetInfoByOrderId" parameterType="int" resultMap="getInfoResultMap">
+        SELECT *from f_getinfo WHERE gi_id = #{id}
+    </select>
+
+
+    <!--================================================3、插入一条收货人信息=========================================-->
+    <!-- INSERT INTO f_getinfo(gi_userId,gi_uerName,gi_userTel,gi_userAddress,gi_uerPost) VALUES(1,"小王","13467873621","阳光丽景21栋12号","330200") -->
+    <insert id="addOneGetInfoData" parameterType="cn.jjxy.pojo.GetInfoAdd">
+        INSERT INTO f_getinfo(gi_userId,gi_uerName,gi_userTel,gi_userAddress,gi_uerPost) VALUES
+            (#{usersId},#{getInfoName},#{getInfoTel},#{getInfoAddress},#{getInfoPost})
+    </insert>
+
+    <!--================================================4、删除一条收货人信息=========================================-->
+    <delete id="delGetInfoOneData" parameterType="int" >
+        DELETE FROM f_getinfo WHERE gi_id=#{getInfoId}
+    </delete>
+
+
+    <!--================================================4、修改一条收货人信息=========================================-->
+    <update id="updateGetInfoOneData" parameterType="cn.jjxy.pojo.GetInfo">
+        update f_getinfo
+        <set>
+            gi_uerName=#{getInfoName},gi_userTel=#{getInfoTel},gi_userAddress=#{getInfoAddress},gi_uerPost=#{getInfoPost}
+        </set>
+        where gi_id= #{getInfoID}
+    </update>
+
+    <!-- ===============================================4、根据收人id查询收人信息==================================== -->
+    <select id="findGetInfoByGetInfoId" parameterType="int" resultMap="getInfoResultMap">
+          SELECT gi_id,gi_userId,gi_uerName,gi_userTel,gi_userAddress,gi_uerPost from f_getinfo WHERE gi_id=#{getInfoId}
+    </select>
+</mapper>

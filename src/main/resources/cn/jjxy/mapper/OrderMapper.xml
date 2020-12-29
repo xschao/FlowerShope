@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jjxy.mapper.OrderMapper" >
+    <!--
+       采用动态代理的方式实现dao：不需要接口，只需要实现类
+       1.命名空间:必须是接口的全路径名
+       2.接口方法名必须与sql id一致
+       3.接口的入参与parameterType 类型一致
+       4.接口的返回值与resultType 类型一致
+   -->
+    <resultMap id="orderResultMap" type="cn.jjxy.pojo.Order">
+        <result property="orderId" column="o_id"/>
+        <result property="userId" column="o_userId"/>
+        <result property="getInfoId" column="o_gi_id"/>
+        <result property="buyTime" column="o_buyTime"/>
+        <result property="sendTime" column="o_sendTime"/>
+        <result property="getTime" column="o_getTime"/>
+    </resultMap>
+
+    <!--====================================1、用户和订单之间的级联操作==============================================-->
+    <!-- 通过用户关联查询订单信息表 -->
+    <resultMap id="getOrderResult" type="cn.jjxy.pojo.Order" extends="orderResultMap">
+        <!--配置多对一的关系 :引入一的一方属性-->
+        <!-- 1、修改property
+             2、type属性
+         -->
+        <association property="users" javaType="cn.jjxy.pojo.Users" >
+            <result property="userId" column="u_id"/>
+            <result property="userName" column="u_name"/>
+            <result property="userPsd" column="u_psd"/>
+            <result property="userSex" column="u_sex"/>
+            <result property="UserTel" column="u_tel"/>
+            <result property="userBirthday" column="u_birthday"/>
+            <result property="uerAddress" column="u_address"/>
+        </association>
+    </resultMap>
+
+    <!-- 1.1、查询当前用户下的所有订单 -->
+    <!-- SELECT *from f_users,f_order  WHERE f_users.u_id = f_order.o_userId and f_users.u_id= 1-->
+    <select id="list_order" parameterType="int" resultMap="getOrderResult">
+        SELECT *from f_users,f_order  WHERE f_users.u_id = f_order.o_userId and f_users.u_id= #{id}
+    </select>
+
+
+    <!--===================2、订单和订单细明之间级联操作  =================================-->
+    <!-- 2.1根据订单编号查询订单详情   -->
+    <!--  配置根据订单查询订单详情 -->
+    <resultMap id="orderToOrderDetail" type="cn.jjxy.pojo.Order" extends="orderResultMap" >
+        <!--设置一对一的关系  用户和订单细明关系：一对多。在一的一方设置多的一方 ：集合
+              property :pojo类设置的集合对象属性
+              select ：在执行根据id查询用户的时候，级联查询用户的收货人信息。
+              column：传入的入参 当前表的主键
+              -->
+        <association property="orderDetail" column="f_order.o_id" select="cn.jjxy.mapper.OrderDetailMapper.list_orderDetail" javaType="cn.jjxy.pojo.OrderDetail"/>
+    </resultMap>
+    <select id="getOrderDetailByOrderId" parameterType="int" resultMap="orderToOrderDetail">
+       SELECT *from f_orderDetail,f_order WHERE f_order.o_id = #{id}
+    </select>
+
+
+    <!--================================================3、订单和收货人之间查询级联操作=================================-->
+    <!-- 3.1、根据订单查询收货人细明 -->
+    <!-- 配置查询订单查询订单细明 -->
+    <resultMap id="orderToGetInfo" type="cn.jjxy.pojo.Order" extends="orderResultMap" >
+        <!--设置一对多的关系  用户和收货人地址关系：一对多。在一的一方设置多的一方 ：集合
+              property :pojo类设置的集合对象属性
+              select ：在执行根据id查询用户的时候，级联查询用户的收货人信息。
+              column：传入的入参 当前表的主键
+              -->
+        <association property="getInfo" column="gi_id" select="cn.jjxy.mapper.GetInfoMapper.getGetInfoByOrderId" javaType="cn.jjxy.pojo.GetInfo"/>
+    </resultMap>
+    <select id="getGetInfoByOrderId" parameterType="int" resultMap="orderToGetInfo">
+        SELECT *from f_getinfo,f_order WHERE f_order.o_id=f_getinfo.gi_id and f_order.o_id = #{id}
+    </select>
+
+
+    <!--====================================================4、插入一条订单记录===============================================-->
+    <insert id="insertOneOrder" parameterType="cn.jjxy.pojo.Order">
+        INSERT INTO f_order (o_id,o_userId,o_gi_id,o_buyTime,o_sendTime,o_getTime) VALUES
+         (#{orderId},#{userId},#{getInfoId},#{buyTime,jdbcType=TIMESTAMP},#{sendTime,jdbcType=TIMESTAMP},#{getTime,jdbcType=TIMESTAMP})
+    </insert>
+
+    <!--====================================================5、删除一条订单记录===============================================-->
+    <!-- 删除订单之前先删除订单详情 -->
+    <delete id="deleteOneOrder" parameterType="int">
+         DELETE FROM f_order WHERE o_id=#{oNum}
+    </delete>
+
+</mapper>

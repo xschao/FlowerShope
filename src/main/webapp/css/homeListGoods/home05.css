@@ -1,0 +1,47 @@
+.invalid-ie {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index:1001;
+}
+
+.invalid-ie-cover {
+    background-color: #232628;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    width: 100%;
+    height: 100%;
+}
+
+.invalid-ie-content {
+    position: fixed;
+    width: 602px;
+    height: 564px;
+    top: 150px;
+    left: 50%;
+    margin-left: -282px;
+}
+
+.invalid-url-ie,
+.invalid-url-google {
+    position: absolute;
+    top: 174px;
+    left: 50%;
+    height: 30px;
+    z-index: 1005;
+    background: url(about:blank);
+}
+
+.invalid-url-ie {
+    margin-left: -150px;
+    width: 120px;
+}
+
+.invalid-url-google {
+    margin-left: -8px;
+    width: 160px;
+}

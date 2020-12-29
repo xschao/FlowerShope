@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jjxy.mapper.UsersMapper" >
+    <!--
+       采用动态代理的方式实现dao：不需要接口，只需要实现类
+       1.命名空间:必须是接口的全路径名
+       2.接口方法名必须与sql id一致
+       3.接口的入参与parameterType 类型一致
+       4.接口的返回值与resultType 类型一致
+   -->
+    <resultMap id="userResultMap" type="cn.jjxy.pojo.Users">
+        <result property="userId" column="u_id"/>
+        <result property="userName" column="u_name"/>
+        <result property="userPsd" column="u_psd"/>
+        <result property="userSex" column="u_sex"/>
+        <result property="UserTel" column="u_tel"/>
+        <result property="userBirthday" column="u_birthday"/>
+        <result property="uerAddress" column="u_address"/>
+    </resultMap>
+    <!--======================================1、登录部分========================================-->
+    <!-- 1、根据用户输入的名称和密码登录 -->
+    <!--SELECT *from f_users where u_name = '123' and u_psd='123';-->
+    <!-- 由于数据库列名和属性名不同，所以要设置一一对应关系 -->
+    <select id="find_nameAndPsd" parameterType="string" resultMap="userResultMap">
+        SELECT *from f_users u  where u_name = #{name} and u_psd = #{password}
+    </select>
+    <!-- 1.1根据用户的电话号码和密码登录 -->
+    <select id="find_loginByTel" parameterType="string" resultMap="userResultMap">
+        SELECT *from f_users u  where u_tel = #{tel} and u_psd = #{password}
+    </select>
+
+    <!--====================================2、注册部分=========================================-->
+    <!-- 2、用户注册 -->
+    <!--insert into f_users (u_name,u_psd,u_sex,u_tel,u_birthday)values('321','321','男','11012010086',2020-11-19)-->
+    <insert id="save_register"  parameterType="cn.jjxy.pojo.Users" >
+        insert into f_users (u_name,u_psd,u_sex,u_tel,u_birthday)values(#{userName},#{userPsd},#{userSex},#{UserTel},#{userBirthday})
+    </insert>
+    <!-- 2.1用户注册验证 ：（1）根据用户名验证 -->
+    <select id="find_checkRegisterByName" parameterType="string" resultType="java.lang.Boolean">
+         SELECT *from f_users u  where u_name = #{userName}
+    </select>
+                      <!-- （2）根据电话号码验证 -->
+    <select id="find_checkRegisterByTel" parameterType="string" resultType="java.lang.Boolean">
+        SELECT *from f_users u  where u_tel = #{tel}
+    </select>
+
+
+    <!--===================================3、根据用户查询用户对应的收货地址部分==================================-->
+    <!-- 3.1、根据用户查询收货人信息   -->
+    <resultMap id="user_listGetInfo" type="cn.jjxy.pojo.Users" extends="userResultMap">
+        <!--设置一对多的关系  用户和收货人地址关系：一对多。在一的一方设置多的一方 ：集合
+              property :pojo类设置的集合对象属性
+              select ：在执行根据id查询用户的时候，级联查询用户的收货人信息。
+              column：传入的入参 当前表的主键
+              -->
+        <collection property="listGetInfo" javaType="List"  column="u_id"  ofType="cn.jjxy.pojo.GetInfo"
+            select="cn.jjxy.mapper.GetInfoMapper.list_getInfo" fetchType="lazy">
+            <id property="getInfoID" column="gi_id"/>
+            <result property="usersId" column="gi_userId"/>
+            <result property="getInfoName" column="gi_uerName"/>
+            <result property="getInfoTel" column="gi_userTel"/>
+            <result property="getInfoAddress" column="gi_userAddress"/>
+            <result property="getInfoPost" column="gi_uerPost"/>
+        </collection>
+    </resultMap>
+    <select id="getGetInfoByUserId" parameterType="int" resultMap="user_listGetInfo">
+           SELECT *from f_users where u_id = #{id}
+    </select>
+
+    <!-- 3.2根据用户名来查询用户的id，来实现用户关联收货信息的查询 -->
+    <select id="getUserIdByUserName" resultType="int" parameterType="string">
+            SELECT u_id from f_users where u_name = #{userName}
+    </select>
+
+
+    <!--====================================4、根据用户查询用户对应的订单部分==================================-->
+    <!--根据用户查询订单信息-->
+    <resultMap id="uer_listOder" type="cn.jjxy.pojo.Users" extends="userResultMap">
+        <!--设置一对多的关系  用户和收货人地址关系：一对多。在一的一方设置多的一方 ：集合
+              1、property :pojo类设置的集合对象属性
+              2、select ：在执行根据id查询用户的时候，级联查询用户的收货人信息。
+              3、column：传入的入参 当前表的主键
+              4、设置type
+              -->
+        <collection property="orderList" javaType="List"  column="u_id"  ofType="cn.jjxy.pojo.Order"
+                    select="cn.jjxy.mapper.OrderMapper.list_order" fetchType="lazy">
+            <id property="orderId" column="o_id"/>
+            <result property="userId" column="o_userId"/>
+            <result property="getInfoId" column="o_gi_id"/>
+            <result property="buyTime" column="o_buyTime"/>
+            <result property="sendTime" column="o_sendTime"/>
+            <result property="getTime" column="o_getTime"/>
+        </collection>
+    </resultMap>
+    <select id="getOrderByUserId" parameterType="int" resultMap="uer_listOder">
+        SELECT *from f_users where u_id = #{id}
+    </select>
+
+    <!--=================================================5、用户个人主页部分=======================================-->
+    <!--  5.1、根据用户名查看用户主页 -->
+    <select id="getUserByName" parameterType="string" resultMap="userResultMap">
+         SELECT *from f_users u  where u_name = #{name}
+    </select>
+    <!-- 5.2、根据用户名修改用户信息 -->
+    <update id="updateUserByUserId" parameterType="cn.jjxy.pojo.Users">
+        update f_users set u_name= #{userName},u_psd= #{userPsd},u_sex= #{userSex},u_tel= #{UserTel} WHERE u_id= #{userId};
+    </update>
+</mapper>

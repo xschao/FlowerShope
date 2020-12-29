@@ -1,0 +1,143 @@
+/*=================公共部分======================*/
+body{
+    padding: 0;
+    margin: 0 auto;
+}
+li>a{
+    text-decoration: none;
+    font-size: 12px;
+    font-family: tahoma, arial, 'Hiragino Sans GB', sans-serif;
+}
+a:hover{
+    text-decoration: none;
+}
+/*==============导航栏部分==================*/
+.nav{
+    min-width: 1200px;
+    height: 35px;
+    margin: 0 auto;
+    border-bottom: 1px solid #e6e6e6;
+    background-color: #f2f2f2;
+}
+li{
+    line-height: 35px;
+    list-style: none;
+}
+.site-nav-l{
+    float: left;
+}
+.site-nav-r{
+    float: right;
+}
+.site-nav-l>li{
+    display: inline;
+    margin-right: 20px;
+}
+.site-nav-l>li >a:hover{
+    text-decoration: none;
+    background-color: #FFF;
+}
+.site-nav-r>li{
+    display: inline;
+    margin-left: 5px;
+}
+.site-nav-r>li >a:hover{
+    text-decoration: none;
+}
+/*============搜索部分==============*/
+header .logo {
+    background-image: url(../images/logo.jpg);
+    background-position: left;
+    background-size:168px;
+}
+header{
+    height: 120px;
+}
+/*===========登录部分===============*/
+.login {
+    height: 480px;
+    width:100%;
+    min-width: 1200px;
+    margin:0 auto;
+    background-image: url(../images/flower.jpg);
+    background-position: -249px;
+    background-repeat: repeat-x;
+}
+.login-box {
+    width: 420px;
+    height: 400px;
+    margin-top: 40px;
+    margin-left:660px;
+    background-color: #FFF;
+}
+.login-box>hr{
+    width: 300px;
+    height: 2px;
+}
+.login-tabs{
+    margin-top: 30px;
+}
+.login-tabs>li{
+    margin-top: 20px;
+    display: block;
+    float: left;
+    margin-left: 30px;
+}
+.active{
+    border-bottom-style:solid;
+    border-bottom-color:#ff6a00; ;
+}
+.active>a{
+    color: #ff6a00;
+}
+.login-tabs>li a{
+    font-family: tahoma, arial, 'Hiragino Sans GB', '\5FAE\8F6F\96C5\9ED1', sans-serif;
+    font-size: 24px;
+}
+.logMethod{
+    float: right;
+    color: #ff6a00;
+    margin-right: 60px;
+    font-size: 14px;
+}
+/*用户名密码登录表单*/
+.tab-content{
+    margin-top: 30px;
+    margin-left: 60px;
+}
+.form-group{
+    height: 40px;
+    width: 300px;
+    margin-top: 10px;
+}
+.sr-only,.input-group-addon,.ico .ico-user{
+    width: 50px;
+    height: 40px;
+}
+/*在这里设置无效果，我设置了行内式*/
+.form-group-input>input{
+    height: 40px;
+    width: 250px;
+    border-color: #dddddd;
+}
+.tab-content>button{
+    height: 40px;
+    width: 300px;
+    border-radius: 5px;
+    box-shadow: 0 0 3px #ff6a00;;
+}
+.other-login-ways{
+    margin-left: 10px;
+}
+.checkbox>a{
+    color: #ff6a00;
+    margin-right: 50px;
+}
+/*其它方式登录*/
+.other-login-ways>ul>li {
+    float: left;
+    margin-left: 10px;
+}
+.other-login-ways span{
+    margin-left: 10px;
+}

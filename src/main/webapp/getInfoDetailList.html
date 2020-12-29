@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<link rel="stylesheet" type="text/css" href="css/goodsCart.css">
+<link href="css/common.css" rel="stylesheet" type="text/css">
+<link href="css/home.css" rel="stylesheet" type="text/css">
+<link href="css/goodsDetail.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/orderDetail.css">
+<link rel="stylesheet" type="text/css" href="css/getInfoDetailList.css">
+<script src="jquery/jquery-3.1.1.min.js"></script>
+<link rel="stylesheet" href="bootstrap-3.3.7/dist/css/bootstrap.min.css"/>
+<script src="bootstrap-3.3.7/dist/js/bootstrap.min.js" type="text/javascript"></script>
+
+<body>
+<!-- 顶部导航 -->
+<div class="nav">
+    <!--导航栏左端-->
+    <ul class="site-nav-l">
+        <li class="menu">
+            <a href="#"><span class="ico ico-star"></span>收藏小姐姐的花店</a>
+        </li>
+        <li class="menu dropdown">
+            <a href="#"><span class="ico ico-weixin"></span>关注微信</a>
+        </li>
+        <li class="menu dropdown">
+            <a href="#"><span class="ico ico-mobile"></span>小姐姐的花店app</a>
+        </li>
+    </ul>
+    <!--导航栏右端-->
+    <ul class="site-nav-r">
+        <li class="menu">
+            <a href="#">你好，请登录</a><a href="#" style="margin-left: 10px">注册</a>
+        </li>
+        <li class="site-nav-pipe">|</li>
+        <li class="menu">
+            <a href="#">订单查询</a>
+        </li>
+        <li class="site-nav-pipe">|</li>
+        <li class="menu dropdown">
+            <a href="#">我的花礼</a>
+        </li>
+        <li class="site-nav-pipe">|</li>
+        <li class="menu dropdown">
+            <a href="#">客户服务<span class="glyphicon glyphicon-triangle-bottom"></span></a>
+        </li>
+        <li class="site-nav-pipe">|</li>
+        <li class="menu dropdown">
+            <a href="#"><span class="ico ico-cart"></span>购物车<span
+                    class="glyphicon glyphicon-triangle-bottom"></span></a>
+            <div class="dropdown-menu dropdown-cart" id="CartInfo"></div>
+        </li>
+        <li class="site-nav-pipe">|</li>
+        <li class="menu slogan">
+            <a href="#"> 小姐姐的花店</a>
+        </li>
+    </ul>
+</div>
+
+<!-- header头部部分-->
+<header>
+    <div class="logo">
+        <h1><a href="#">小姐姐的花店</a></h1>
+    </div>
+    <div class="search">
+        <form action="" method="get" name="i_search">
+            <div class="input-group">
+                <input class="form-control" name="keyword" placeholder="商品关键词" type="text">
+                <span class="input-group-btn">
+                            <button class="btn btn-primary" id="test" onClick="this.form.submit()"
+                                    type="button">搜索</button>
+                    </span>
+            </div>
+        </form>
+    </div>
+    <div class="service serviceDefault">
+        <span class="ico ico-phone"></span>0791-8316800
+        <a id="header-chat" target="_blank"><span class="ico ico-headset"></span>在线客服</a>
+    </div>
+</header>
+<!-- header结束 -->
+
+<!-- 中间导航部分  -->
+<nav class="navbar navbar-default">
+    <div class="container">
+        <ul class="nav nav_ul" id="no">
+            <li role="presentation" class="home_li"><a class="active" href="#">网站首页</a></li>
+            <li class="dropdown" id="ho"><a href="#" class="dropdown-toggle">产品中心</a></li>
+            <li role="presentation"><a href="#">永生花</a></li>
+            <li role="presentation"><a href="#">绿值盆栽</a></li>
+            <li role="presentation"><a href="#">花语大全</a></li>
+            <li role="presentation"><a href="#">设计师臻选</a></li>
+            <li role="presentation"><a href="#">在线留言</a></li>
+        </ul>
+    </div>
+</nav>
+<!-- 中间导航部分结束 -->
+
+<!-- 返回用户主页 -->
+<div class="back">
+    <a href="#">用户主页</a>
+    <b>></b> <a href="#" class="active">常用收货人 <b>></b></a>
+
+</div>
+<!-- 返回用户主页结束 -->
+
+<!-- 显示常用守护人信息 -->
+<div class="getInfoDetail">
+
+    <table class="table table-bordered table-hover">
+        <thead class="table_header">
+        <tr>
+            <th style="width: 50px;text-align: center">编号</th>
+            <th style="width: 150px;">姓名</th>
+            <th style="width: 200px">手机号</th>
+            <th style="width: 600px">详细地址</th>
+            <th style="width:100px">邮编</th>
+            <th style="width:100px">操作</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Tanmay</td>
+            <td>Bangalore</td>
+            <td>560001</td>
+            <td>Bangalore</td>
+            <td>560001</td>
+            <td>修改 | 删除</td>
+        <tr>
+            <td>Tanmay</td>
+            <td>Bangalore</td>
+            <td>560001</td>
+            <td>Bangalore</td>
+            <td>560001</td>
+            <td>修改 | 删除</td>
+        </tr>
+        <tr>
+            <td>Tanmay</td>
+            <td>Bangalore</td>
+            <td>560001</td>
+            <td>Bangalore</td>
+            <td>560001</td>
+            <td>修改 | 删除</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- 显示常用收货人信息结束 -->
+</body>
+</html>

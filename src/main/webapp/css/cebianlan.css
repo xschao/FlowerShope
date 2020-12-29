@@ -1,0 +1,25 @@
+#sidebar{width:180px;position:fixed;right:-126px;top:50%;z-index:999999;_position:absolute;}
+.sidebar_ul{width:180px;}
+.sidebar_ul li{width:100%;height:54px;margin-bottom:3px;background:#000000  no-repeat;border-radius:3px;line-height:54px;color:#fff;cursor:pointer;text-indent:54px;*vertical-align:middle;}
+.sidebar_ul li a{color:#fff;display:block;}
+.consult_div{width:100px;position:absolute;left:-110px;top:0;background:#000000;text-align:center;text-indent:0;padding:5px;border-radius:2px;display:none;border-right:1px solid #FFF;}
+.consult_div h3{height:34px;line-height:34px;font-size:20px;color:#FFF;font-family:"微软雅黑";cursor:auto;}
+.consult_div h3 span{float:right;maring-right:5px;display:block;width:14px;height:14px;font-size:14px;_overflow:hidden;font-family:"宋体";cursor:pointer;}
+.phone_div{width:100px;position:absolute;left:-110px;top:0;background:#000000;text-align:center;text-indent:0;padding:5px;border-radius:2px;display:none;border-right:1px solid #FFF;}
+.phone_div h3{height:34px;line-height:34px;font-size:20px;color:#FFF;font-family:"微软雅黑";cursor:auto;}
+.phone_div h3 span{float:right;maring-right:5px;display:block;width:14px;height:14px;font-size:14px;_overflow:hidden;font-family:"宋体";cursor:pointer;}
+.kefu_name{height:54px;line-height:0;background:#FFF;border-bottom:1px dashed #CCCCCC;}
+.kefu_name p{height:27px;line-height:27px;color:#000;font-size:14px;}
+.kefu_name a{height:22px;display:block;padding:0 11px;}
+.sidebar_ul .coping{background-position:4px -342px;}
+.sidebar_ul .phone{background-position:4px -285px;cursor:auto;}
+.sidebar_ul .feedback{background-position:4px 0;}
+.sidebar_ul .shopping{background-position:4px -114px;}
+.sidebar_ul .user_center{background-position:4px -171px;}
+.sidebar_ul .distribution{background-position:4px -228px;}
+.sidebar_ul .tuiguang{background-position:4px -692px;}
+.sidebar_ul .fenxiang{background-position:4px -632px;}
+.sidebar_ul .consult{background-position:4px -57px;position:relative;}
+.sidebar_ul .phone{position:relative;}
+.sidebar_ul .qr_code{background-position:4px -399px;overflow:hidden;cursor:auto;}
+.sidebar_ul .qr_code img{width:128px;height:128px;display:block;margin:0 auto;}

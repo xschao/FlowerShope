@@ -1,0 +1,365 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8" />
+    <title>在线留言-鲜花</title>
+    <meta name="keywords" content="在线留言,SiteName" />
+    <meta name="description" content="在线留言-SiteName" />
+    <link rel="stylesheet" type="text/css" href="css/liuyan.css">
+    <link href="bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<style>
+    .m-wg-hd h2{
+        color: red;
+        font-size: 15px;
+    }
+    .m-content p{
+       font-size: 12px;
+    }
+    .u-tiptxt{
+        float: left;
+        font-size: 12px;
+        line-height:30px;
+        background-color:#F5F5F5;
+        height:80px;
+        width: 60%;
+        padding-left: 100px;
+    }
+    .u-tiptxt p{
+      text-indent: -6em;
+
+    }
+    .u-textarea{
+        float: left;
+        height: 200px;
+        width: 60%;
+        padding-left: 100px;
+    }
+    .u-line{
+        float: left;
+
+    }
+    .container-fluid{
+
+        height:108px;
+        background-color: #0f0f0f;
+    }
+    .container-fluid img{
+        margin-left: 35%;
+        width: 366px;
+        height: 108px;
+    }
+    .container{
+        padding-left: 20%;
+    }
+
+    .container>ul li a {
+        color: white;
+    }
+
+    #no>li a:hover{
+        background-color: red;
+    }
+
+    #no>li a:focus{
+        background-color: red;
+    }
+    .dropdown-menu>li{
+        padding-left: 35%;
+    }
+
+
+    .caption p{
+        height:38px;
+        line-height:38px;
+        width:100%;
+        font-size:14px;
+        color:#555;
+        margin-top:10px;
+        overflow:hidden;
+        white-space: nowrap;
+    }
+
+
+    .container-fluid{
+
+        height:108px;
+        background-color: #0f0f0f;
+    }
+    .container-fluid img{
+        margin-left: 35%;
+        width: 366px;
+        height: 108px;
+    }
+    .container{
+        padding-left: 20%;
+    }
+
+    .container>ul li a {
+        color: white;
+    }
+
+    #no>li a:hover{
+        background-color: red;
+    }
+
+    #no>li a:focus{
+        background-color: red;
+    }
+    .dropdown-menu>li{
+        padding-left: 35%;
+    }
+
+
+    .caption p{
+        height:38px;
+        line-height:38px;
+        width:100%;
+        font-size:14px;
+        color:#555;
+        margin-top:10px;
+        overflow:hidden;
+        white-space: nowrap;
+
+
+    }
+</style>
+<body>
+<!-- 头部注册-->
+<div class='g-document'>
+    <header class="g-hd">
+        <div class='g-hd-outer'>
+            <div class='g-hd-edit'>
+                <!--是否显示整体注册条-->
+                <div class='g-hd-topmenu m-head-regist'>
+                    <div class="g-hd-inner">
+                        <div class="m-hd-top-left">
+						<span id='set_userbox' >
+                            <a class="u-hd-btn" id='set_login' href="Login.html" style="color:;">登录</a>
+                            <a class="u-hd-btn f-no-rborder" id='set_register' href="Register.html" style="color:;">注册</a>
+                        </span>
+                        </div>
+                        <div class="m-hd-top-right">
+                            <a class="u-hd-btn" href="#"  id='set_startpage' style="color:;">设为首页</a>
+                            <a class="u-hd-btn" href="#"  id='set_favorite' style="color:;">收藏本站</a>
+                            <a class="u-hd-btn u-trans f-no-rborder" href="#"  id='set_translation' style="color:;">简繁切换</a>
+                            <a class="u-hd-btn u-trans f-no-rborder" href="/order/cart.php"  id='set_cart' style="color:;"><img src="images/2.png" width='12px' height='12px'> 购物车</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+</div><!--头部购物车结束-->
+
+<!--导航开始-->
+<div class="container-fluid">
+    <img src="images/29.png">
+
+</div>
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <ul class="nav nav-pills" id="no">
+
+            <li role="presentation" ><a href="#">网站首页</a></li>
+
+            <li class="dropdown" id="ho">
+                <a href="goodsCenter.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    产品中心 <span class="caret"></span></a>
+
+            </li>
+            <li role="presentation"><a href="#">花语大全</a></li>
+            <li role="presentation"><a href="designer.html">设计师臻选</a></li>
+            <li role="presentation" ><a href="#">永生花</a></li>
+            <li role="presentation"><a href="#">在线留言</a></li>
+        </ul>
+    </div>
+</nav>
+<!--导航结束>
+
+<!--留言-->
+<div class="m-wg m-default m-default-default" id="visualmodule_1"
+     style='width:301px;height:378px;float:left;border-style:none;border-width:0px;border-color:#333333;
+             margin-left:30px;margin-right:30px;margin-top:10px;margin-bottom:0px;padding-left:40px;padding-right:40px;
+             padding-top:0px;padding-bottom:0px;'>
+    <span class="m-wg-hd">
+        <h2>企业信息</h2>
+        <div class="" style="background-color: red;height: 2px ;width: 100px;" ></div>
+        <hr style="background-color:#8c8c8c;height: 1px; width:200px;margin-left:5px;margin-top: 0;"/>
+
+    </span>
+
+    <div class="m-wg-ct">
+        <div class='m-theme35'>
+            <div class='m-content'>
+                <p>企业名称:网站</p>
+                <p>地址信息:400000000</p>
+                <p>联系方式:400000000</p>
+                <p>联系邮箱:400000000</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="u-tiptxt">
+   <p> 非常感谢您使用我们网站！如果您有任何建议与意见，欢迎留言告诉我们。
+    对于您在产品购买过程中发生问题，您也可以向我们反馈，我们将尽力为您解决问题。</p>
+</div>
+<div class='m-theme33-form'>
+    <div class='m-theme33-form' >
+        <form action="message.php" method="post">
+            <div style='padding-right:15px;'><textarea class='u-textarea'  name="content"></textarea></div>
+
+            <p class='u-line' style="float: left;width: 500px" >
+                <label>
+                    <span id="nis_need" style="color:red;">*</span>
+                    <span id="name1">你的名称</span>：
+                </label>
+                <input class='u-input' type="text" id='nickname' name="nickname" size="15" maxlength="50" value=""/>
+            </p>
+
+            <p class='u-line' style="width:auto;float: left">
+                <label>
+                    <span id="cis_need" style="color:red;">*</span>
+                    <span id="name2">你的电话</span>：
+                </label>
+                <input class='u-input' type="text" id="contact"  name="contact" size="15" maxlength="50" value='' />
+            </p>
+            </form>
+        </div>
+    </div>
+
+<div style="margin-top:0px; float:left; position:relative" >
+    <div class="btn" style=" margin:5px 10px 0 0;">
+        <button style="background-color: green;border-radius:10%;border-color: green"><span style="color: white">添加附件</span></button>
+    </div>
+    <div style="color:gray;font-size: 12px">
+        只能上传格式为doc,docx,xls,xlsx,ppt,zip,rar,gz,bz2,
+        bmp,jpg,jpeg,jpe,jfif,gif,tif,tiff,png的文件,该文件最大不能超过2M。</div>
+    <div class="files" style=" color:red; position:absolute; top:0px; left:90px;"></div>
+    <script type="text/javascript">
+
+
+        $(function () {
+            $(document).ready(function () {
+                var WEB_ROOT = 'http://a00336c.demo.guanwangyun.com';
+                Xmisc_captcha = function (id) {
+                    $('#tuukdkdkd').attr('src', WEB_ROOT + '/captcha.php?v=' + Math.random());
+                };
+                $(".u-submit").click(function () {
+                    if ($(".u-textarea").val().trim() == '') {
+                        alert('留言内容不能为空');
+                        $(".u-textarea").focus();
+                        return false;
+                    }
+                    if ($("#nis_need").length > 0) {
+                        name = $("#name1").html();
+                        if ($("#nickname").val().trim() == '') {
+                            alert(name + '不能为空');
+                            $("#nickname").focus();
+                            return false;
+                        }
+                    }
+                    if ($("#cis_need").length > 0) {
+                        name2 = $("#name2").html();
+                        if ($("#contact").val().trim() == '') {
+                            alert(name2 + '不能为空');
+                            $("#contact").focus();
+                            return false;
+                        }
+                    }
+                    function testAsync() {
+                        var result = true;
+                        $.ajax({
+                            url: WEB_ROOT + "/account/valifycode.php",
+                            async: false,//改为同步方式
+                            type: "POST",
+                            data: {validCode: $('#validateCode').val().trim()},
+                            success: function (data) {
+                                if (data == 'yes') {
+                                    alert('验证码错误！');
+                                    $('#validateCode').focus();
+                                    result = false;
+                                }
+                            }
+                        });
+                        return result;
+                    }
+
+                    if ($('#validateCode').val().trim() != '') {
+                        if (!testAsync()) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    } else {
+                        alert('验证码不能为空');
+                        $('#validateCode').focus();
+                        return false;
+                    }
+                });
+
+
+            });
+            $(function () {
+                var bar = $('.bar');
+                var fileurl = $('#fileurl');
+                var percent = $('.percent');
+                var files = $(".files");
+                var progress = $(".progress");
+                var btn = $(".btn span");
+                $("#fileupload").wrap("<form id='myupload' action='/webapi/kindupload.php?s=a00336c&t=message&dir=file' method='post' enctype='multipart/form-data'></form>");
+                $("#fileupload").change(function () {
+                    if ($("#fileupload").val().length == 0) {
+                        files.html("");
+                    } else {
+                        $("#myupload").ajaxSubmit({
+                            dataType: 'json',
+                            beforeSend: function () {
+                                progress.show();
+                                var percentVal = '0%';
+                                bar.width(percentVal);
+                                percent.html(percentVal);
+                                btn.html("上传中...");
+                            },
+                            uploadProgress: function (event, position, total, percentComplete) {
+                                var percentVal = percentComplete + '%';
+                                bar.width(percentVal);
+                                percent.html(percentVal);
+                            },
+                            success: function (xhr) {
+                                if (xhr['error'] == 1) {
+                                    bar.width('0');
+                                    percent.html("");
+                                    fileurl.val("");
+                                    btn.html("上传失败");
+                                    files.html(xhr['message']);
+                                } else {
+                                    btn.html('上传成功！');
+                                    files.html("");
+                                    fileurl.val(xhr['url']);
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        });
+
+
+                </script>
+                <style type='text/css'>
+
+                    .m-demo-sitetips .m-demo-keepcenter {max-width: 960px;min-width: 700px;_width: 860px;height: 48px;line-height: 48px;margin: 0 auto;position: relative;}
+                    .m-demo-sitetips .m-demo-tiptext {float: left;padding-left: 20px;}
+                    .m-demo-sitetips .m-demo-tiptext span {color: #666;_float:left;}
+                    .m-demo-red{color:red;}
+                </style>
+
+                </div>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="bootstrap-3.3.7/bootstrap-3.3.7/dist/css/bootstrap.min.css"></script>
+</body>

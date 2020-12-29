@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <!-- 配置@Controller处理器，Spring使用扫描机制会查找应用程序中基于注解的控制类。-->
+    <context:component-scan base-package="cn.jjxy.controller" />
+    <!-- 配置注解驱动，相当于配置了最新的映射器和处理器适配器  对json数据响应提供了支持 -->
+    <mvc:annotation-driven/>
+
+   <!-- &lt;!&ndash;  配置全局异常处理器  的是系统运行中的中断错误 &ndash;&gt;
+    <bean class="cn.jjxy.exception.CustomerExceptionResolver"/>
+
+    &lt;!&ndash; 使用Annotation自动注册Bean,扫描@Controller和@ControllerAdvice&ndash;&gt;
+    <context:component-scan base-package="cn.jjxy.exception" use-default-filters="false">
+        &lt;!&ndash; base-package 如果多个，用“,”分隔 &ndash;&gt;
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+        &lt;!&ndash;控制器增强，使一个Contoller成为全局的异常处理类，类中用@ExceptionHandler方法注解的方法可以处理所有Controller发生的异常&ndash;&gt;
+        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+    </context:component-scan>-->
+
+    <!-- 配置多媒体处理器 -->
+    <!-- 注意id必须重写，multipartResolver -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 配置上传文件大小  8MB-->
+        <property name="maxUploadSize" value="8388608"/>
+    </bean>
+
+    <!-- 配置拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--这样配置，如果没有登录将将拦截所有springmvc的url-->
+            <mvc:mapping path="/**"/>
+            <!-- 如果用户没登录，进行非法请求的话拦截到登录界面 -->
+            <mvc:exclude-mapping path="/user/**"/><!-- 放开用户权限 -->
+            <mvc:exclude-mapping path="/person/**"/>
+            <mvc:exclude-mapping path="/admin/**"/>
+            <bean class="cn.jjxy.interception.LoginInterception"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <!-- 静态资源 -->
+    <mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
+    <mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
+    <mvc:resources location="/jquery/" mapping="/jquery/**"></mvc:resources>
+    <mvc:resources location="/bootstrap-3.3.7/" mapping="/bootstrap-3.3.7/**"></mvc:resources>
+    <mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
+    <mvc:resources location="/admin/" mapping="/admin/**"></mvc:resources>
+    <!-- 配置视图显示器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+</beans>

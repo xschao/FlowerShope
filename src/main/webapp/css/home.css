@@ -1,0 +1,128 @@
+/*=================公共部分======================*/
+body {
+    padding: 0;
+    margin: 0 auto;
+}
+
+li > a {
+    text-decoration: none;
+    font-size: 12px;
+    font-family: tahoma, arial, 'Hiragino Sans GB', sans-serif;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/*==============导航栏部分==================*/
+.nav {
+    min-width: 1200px;
+    height: 35px;
+    margin: 0 auto;
+    border-bottom: 1px solid #e6e6e6;
+    background-color: #f2f2f2;
+}
+
+li {
+    line-height: 35px;
+    list-style: none;
+}
+
+.site-nav-l {
+    float: left;
+}
+
+.site-nav-r {
+    float: right;
+}
+
+.site-nav-l > li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.site-nav-l > li > a:hover {
+    text-decoration: none;
+    background-color: #FFF;
+}
+
+.site-nav-r > li {
+    display: inline;
+    margin-left: 5px;
+}
+
+.site-nav-r > li > a:hover {
+    text-decoration: none;
+}
+
+/*============搜索部分==============*/
+header .logo {
+    background-image: url(../images/logo.jpg);
+    background-position: left;
+    background-size: 168px;
+}
+header {
+    height: 170px;
+}
+
+/* 中部轮播图 */
+.nav_ul {
+    border: none;
+    background-color: transparent;
+
+}
+.home_li{
+    margin-left: 20%;
+}
+
+.pic {
+    height: 450px;
+}
+
+.pic > img {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.small-carousel-div {
+
+}
+
+.small-carousel > img {
+    border: 3px solid #e1e1e1;
+    border-top: 6px solid #e1e1e1;
+    border-bottom: 6px solid #e1e1e1;
+    float: left;
+    width: 25%;
+    height: 150px;
+}
+
+/* 中部轮播图 结束*/
+
+/* 侧边导航栏 */
+.side_navbr {
+    top: 0;
+    left: 0;
+    margin-top: 155px;
+    position: absolute;
+}
+
+.side_contain {
+    margin-top:50px;
+}
+.side_contain>span{
+    color: blue;
+}
+.panelDetail{
+    display: block;
+    float: right;
+}
+.input-group-btn> .btn-primary {
+    color: #ffffff;
+    border-color: #f56600;
+    background-color: #f56600;
+}
+.categorys-title{
+    margin-top: -4px;
+}

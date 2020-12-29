@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jjxy.mapper.GoodsMapper" >
+    <!--
+       采用动态代理的方式实现dao：不需要接口，只需要实现类
+       1.命名空间:必须是接口的全路径名
+       2.接口方法名必须与sql id一致
+       3.接口的入参与parameterType 类型一致
+       4.接口的返回值与resultType 类型一致
+   -->
+    <resultMap id="goodsListMap" type="cn.jjxy.pojo.Goods">
+        <result property="goodsId" column="g_id"/>
+        <result property="goodsImg" column="g_img"/>
+        <result property="goodsName" column="g_name"/>
+        <result property="goodsDesc" column="g_desc"/>
+        <result property="goodsPrice" column="g_price"/>
+        <result property="goodsSell" column="g_sell"/>
+        <result property="goodsSurplus" column="g_surplus"/>
+    </resultMap>
+    <!--============================================1.用于主页商品显示=======================================-->
+    <select id="list_goods" resultMap="goodsListMap">
+        SELECT *FROM f_goods
+    </select>
+
+    <!--=============================================2.用于购物车页面显示====================================-->
+    <select id="getGoodsDetailById" resultMap="goodsListMap" parameterType="int">
+        SELECT *FROM f_goods WHERE g_id = #{id}
+    </select>
+
+    <!-- ============================================3.略略略================================================-->
+    <!-- 查询所有商品的id 返回id，用于标识商品-->
+    <select id="getGoodsIdById" resultType="int">
+        SELECT g_id from f_goods
+    </select>
+
+    <!--==============================================4、商品关联订单详情的部分=================================-->
+    <!-- 4.1根据订单详情关联商品查询   商品和订单详情：多对一的关系   -->
+    <resultMap id="goodsToOrderDetail" type="cn.jjxy.pojo.Goods" extends="goodsListMap">
+        <!--配置多对一的关系 :引入一的一方属性-->
+        <association property="orderDetail" javaType="cn.jjxy.pojo.OrderDetail" >
+            <id property="orderDetailId" column="fod_id"/>
+            <result property="goodsId" column="fod_goodsId"/>
+            <result property="orderId" column="fod_f_orderId"/>
+            <result property="orderDetailNum" column="fod_num"/>
+        </association>
+    </resultMap>
+    <!-- 4.1、根据订单详情查询订单下的所有商品  当订单编号和商品详情编号相等时查出   -->
+    <!--    SELECT *from f_goods,f_orderdetail  WHERE f_goods.g_id=f_orderdetail.fod_goodsId and f_orderdetail.fod_f_orderId=1 -->
+    <select id="getGoodsByOrderDetailId" parameterType="int" resultMap="goodsToOrderDetail">
+        SELECT *from f_goods,f_orderdetail  WHERE f_goods.g_id=f_orderdetail.fod_goodsId and f_orderdetail.fod_f_orderId= #{id}
+    </select>
+</mapper>

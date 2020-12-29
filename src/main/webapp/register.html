@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小姐姐的花店登录界面</title>
+</head>
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/register.css">
+<script type="text/javascript" src="jquery/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
+<body>
+<!-- 顶部导航 -->
+<div class="nav">
+    <!--导航栏左端-->
+    <ul class="site-nav-l">
+        <li class="menu">
+            <a href="#"><span class="ico ico-star"></span>收藏小姐姐的花店</a>
+        </li>
+        <li class="menu dropdown">
+            <a href="#"><span class="ico ico-weixin"></span>关注微信</a>
+        </li>
+        <li class="menu dropdown">
+            <a href="#"><span class="ico ico-mobile"></span>小姐姐的花店app</a>
+        </li>
+    </ul>
+    <!--导航栏右端-->
+    <ul class="site-nav-r">
+        <li class="menu">
+            <a href="#">你好，请登录</a><a href="#" style="margin-left: 10px">注册</a>
+        </li>
+        <li class="site-nav-pipe">|</li>
+        <li class="menu">
+            <a href="#">订单查询</a>
+        </li>
+        <li class="site-nav-pipe">|</li>
+        <li class="menu dropdown">
+            <a href="#">我的花礼</a>
+        </li>
+        <li class="site-nav-pipe">|</li>
+        <li class="menu dropdown">
+            <a href="#">客户服务<span class="glyphicon glyphicon-triangle-bottom"></span></a>
+        </li>
+        <li class="site-nav-pipe">|</li>
+        <li class="menu dropdown">
+            <a href="#"><span class="ico ico-cart"></span>购物车<span
+                    class="glyphicon glyphicon-triangle-bottom"></span></a>
+            <div class="dropdown-menu dropdown-cart" id="CartInfo"></div>
+        </li>
+        <li class="site-nav-pipe">|</li>
+        <li class="menu slogan">
+            <a href="#"> 小姐姐的花店</a>
+        </li>
+    </ul>
+</div>
+<!-- 头部 登录部分-->
+<header>
+    <div class="logo">
+        <h1><a href="#">小姐姐的花店</a></h1>
+    </div>
+    <div class="search">
+        <form name="i_search" method="get" action="">
+            <div class="input-group">
+                <input name="keyword" type="text" class="form-control" placeholder="商品关键词">
+                <span class="input-group-btn">
+                        <button id="test" class="btn btn-primary" type="button" onClick="this.form.submit()">搜索</button>
+                </span>
+            </div>
+        </form>
+    </div>
+    <div class="service serviceDefault">
+        <span class="ico ico-phone"></span>0791-8316800
+        <a target="_blank" id="header-chat"><span class="ico ico-headset"></span>在线客服</a>
+    </div>
+</header>
+<!-- 登录部分 -->
+<div class="login">
+    <div class="container">
+        <div class="login-box">
+            <!-- 登录/注册tab -->
+            <ul class="login-tabs">
+                <li><a href="login.html">登录</a></li>
+                <li class="active"><a href="register.html">注册</a></li>
+            </ul>
+            <hr/>
+            <!-- 登录/注册tab End -->
+            <div name="myForm">
+                <div class="tab-content">
+                    <!-- 注册 -->
+                    <div id="registerPane">
+                        <div class="login-notice" id="Enr" style="display:none;"></div>
+                        <div class="form-group">
+                            <input onblur="checkName()" name="name" id="name" type="text" class="form-control" placeholder="请输入你的名称"maxlength="10" autocomplete="off"><span id="checkName"></span>
+                        </div>
+                        <div class="form-group">
+                            <input name="psd" id="PassWord" type="password"  class="form-control" placeholder="密码" maxlength="10" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input onblur="checkTel()" id="tel" name="tel" type="tel" class="form-control" placeholder="电话号" maxlength="11" autocomplete="off"><span id="checkTel"></span>
+                        </div>
+                        <div class="form-group ">
+                            <p><input type="date" name="birthday" class="form-control" placeholder="出生日期"></p>
+                        </div>
+                        <div class="form-group ">
+                            <p><input type="text" name="sex" class="form-control" placeholder="性别:男、女"maxlength="1" autocomplete="off"></p><span id="checkRegister"></span>
+                        </div>
+                        <button onclick="register()" class="btn btn-primary register-button" >立即注册</button>
+                    </div>
+                </div>
+                <!-- 注册 End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 底部 -->
+<div class="footer-nav">
+    <a href="/user/loginPage.action?userName=visitor">首页</a> <b>|</b>
+    <a href="" target="_blank">关于我们</a> <b>|</b>
+    <a href="" target="_blank">联系方式</a> <b>|</b>
+</div>
+</body>
+</html>

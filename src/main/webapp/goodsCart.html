@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css/goodsCart.css">
+    <link href="css/common.css" rel="stylesheet" type="text/css">
+    <link href="css/home.css" rel="stylesheet" type="text/css">
+    <link href="css/goodsDetail.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!-- 顶部导航 -->
+<div class="nav">
+    <!--导航栏左端-->
+    <ul class="site-nav-l">
+        <li class="menu">
+            <a href="#"><span class="ico ico-star"></span>收藏小姐姐的花店</a>
+        </li>
+        <li class="menu dropdown">
+            <a href="#"><span class="ico ico-weixin"></span>关注微信</a>
+        </li>
+        <li class="menu dropdown">
+            <a href="#"><span class="ico ico-mobile"></span>小姐姐的花店app</a>
+        </li>
+    </ul>
+    <!--导航栏右端-->
+    <ul class="site-nav-r">
+        <li class="menu">
+            <a href="#">你好，请登录</a><a href="#" style="margin-left: 10px">注册</a>
+        </li>
+        <li class="site-nav-pipe">|</li>
+        <li class="menu">
+            <a href="#">订单查询</a>
+        </li>
+        <li class="site-nav-pipe">|</li>
+        <li class="menu dropdown">
+            <a href="#">我的花礼</a>
+        </li>
+        <li class="site-nav-pipe">|</li>
+        <li class="menu dropdown">
+            <a href="#">客户服务<span class="glyphicon glyphicon-triangle-bottom"></span></a>
+        </li>
+        <li class="site-nav-pipe">|</li>
+        <li class="menu dropdown">
+            <a href="#"><span class="ico ico-cart"></span>购物车<span
+                    class="glyphicon glyphicon-triangle-bottom"></span></a>
+            <div class="dropdown-menu dropdown-cart" id="CartInfo"></div>
+        </li>
+        <li class="site-nav-pipe">|</li>
+        <li class="menu slogan">
+            <a href="#"> 小姐姐的花店</a>
+        </li>
+    </ul>
+</div>
+<!-- header头部部分-->
+<header>
+    <div class="logo">
+        <h1><a href="#">小姐姐的花店</a></h1>
+    </div>
+    <div class="search">
+        <form action="" method="get" name="i_search">
+            <div class="input-group">
+                <input class="form-control" name="keyword" placeholder="商品关键词" type="text">
+                <span class="input-group-btn">
+                            <button class="btn btn-primary" id="test" onClick="this.form.submit()"
+                                    type="button">搜索</button>
+                    </span>
+            </div>
+        </form>
+    </div>
+    <div class="service serviceDefault">
+        <span class="ico ico-phone"></span>0791-8316800
+        <a id="header-chat" target="_blank"><span class="ico ico-headset"></span>在线客服</a>
+    </div>
+</header>
+<!-- header结束 -->
+
+<!-- 中间导航部分  -->
+<nav class="navbar navbar-default">
+    <div class="container">
+        <ul class="nav nav_ul" id="no">
+            <li role="presentation" class="home_li"><a class="active" href="#">网站首页</a></li>
+            <li class="dropdown" id="ho"><a href="#" class="dropdown-toggle">产品中心</a></li>
+            <li role="presentation"><a href="#">永生花</a></li>
+            <li role="presentation"><a href="#">绿值盆栽</a></li>
+            <li role="presentation"><a href="#">花语大全</a></li>
+            <li role="presentation"><a href="#">设计师臻选</a></li>
+            <li role="presentation"><a href="#">在线留言</a></li>
+        </ul>
+    </div>
+</nav>
+<!-- 中间导航部分结束 -->
+
+<!-- 返回购物车 -->
+<div class="back">
+    <a href="#">首页</a>
+    <b>></b> <a href="#">商品详情</a>
+    <b>></b> <a class="active" href="#" >购物车</a>
+</div>
+<!-- 返回购物车结束 -->
+
+<!-- 购物车列表 -->
+<div id="box">
+    <div class="box_cart">
+        <table id="cart">
+            <tr id="head">
+                <td width="100px"><input class="allSelect" type="checkbox">  全选</td>
+                <td width="500px;">商品</td>
+                <td width="100px">单价</td>
+                <td width="120px">数量</td>
+                <td width="100px">小计</td>
+                <td width="130px">操作</td>
+            </tr>
+            <tr>
+                <td><input class="select" type="checkbox"></td>
+                <td class="goods"><img src="images/goods01.jpg">外星人笔记本电脑17 R4 15R3 13寸 17寸 alienware今晚吃鸡游戏本</td>
+                <td class="price">12888.00</td>
+                <td>
+                    <div class="number">
+                        <div class="desymbol">-</div>
+                        <div class="acc">1</div>
+                        <div class="adsymbol">+</div>
+                    </div>
+                </td>
+                <td class="total"></td>
+                <td class="dele">删除 | 收藏</td>
+            </tr>
+            <tr>
+                <td><input class="select" type="checkbox"></td>
+                <td class="goods"><img src="images/goods01.jpg">任天堂（Nintendo）Switch 家用游戏机 掌机NS智能体感游戏主机</td>
+                <td class="price">2258.00</td>
+                <td>
+                    <div class="number">
+                        <div class="desymbol">-</div>
+                        <div class="acc">1</div>
+                        <div class="adsymbol">+</div>
+                    </div>
+                </td>
+                <td class="total"></td>
+                <td class="dele">删除</td>
+            </tr>
+            <tr>
+                <td><input class="select" type="checkbox"></td>
+                <td class="goods"><img src="images/goods01.jpg">Microsoft/微软 Surface Pro i5 8G 256G 笔记本平板电脑二合一</td>
+                <td class="price">4999.00</td>
+                <td>
+                    <div class="number">
+                        <div class="desymbol">-</div>
+                        <div class="acc">1</div>
+                        <div class="adsymbol">+</div>
+                    </div>
+                </td>
+                <td class="total"></td>
+                <td class="dele">删除</td>
+            </tr>
+            <tr>
+                <td><input class="select" type="checkbox"></td>
+                <td class="goods"><img src="images/goods01.jpg">Apple/苹果 10.5 英寸 iPad Pro</td>
+                <td class="price">3666.00</td>
+                <td>
+                    <div class="number">
+                        <div class="desymbol">-</div>
+                        <div class="acc">1</div>
+                        <div class="adsymbol">+</div>
+                    </div>
+                </td>
+                <td class="total"></td>
+                <td class="dele">删除</td>
+            </tr>
+        </table>
+
+        <div id="settlement">
+            <div style="width:600px"><input class="allSelect" type="checkbox">    全选</div>
+            <div style="width:120px">全选商品<span id="NumofGoods"></span><span>件^</span></div>
+            <div style="width:120px">合计：¥<span id="addupto"></span></div>
+            <div style="width:120px;text-align: center;border-left:1px solid #000000;"> <button class="btn btn-primary">结算</button></div>
+        </div>
+    </div>
+</div>
+<!-- 购物车列表结束 -->
+<script type="text/javascript" src="js/goodsCart.js"></script>
+</body>
+</html>

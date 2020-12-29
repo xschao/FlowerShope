@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jjxy.mapper.OrderDetailMapper" >
+
+
+
+    <resultMap id="orderDetailResultMap" type="cn.jjxy.pojo.OrderDetail">
+        <id property="orderDetailId" column="fod_id"/>
+        <result property="goodsId" column="fod_goodsId"/>
+        <result property="orderId" column="fod_f_orderId"/>
+        <result property="orderDetailNum" column="fod_num"/>
+    </resultMap>
+
+    <!-- ====================================1、单表查询 ==============================================-->
+    <!-- 根据订单详情编号查询订单详情 -->
+    <select id="list_orderDetail" parameterType="int" resultMap="orderDetailResultMap">
+        SELECT *from f_orderDetail WHERE fod_id = #{id}
+    </select>
+
+    <!-- =====================================2、订单详情关联商品部分==================================-->
+    <resultMap id="orderDetailToGoods" type="cn.jjxy.pojo.OrderDetail" extends="orderDetailResultMap">
+        <!--设置一对多的关系  用户和收货人地址关系：一对多。在一的一方设置多的一方 ：集合
+              property :pojo类设置的集合对象属性
+              select ：在执行根据id查询用户的时候，级联查询用户的收货人信息。
+              column：传入的入参 当前表的主键
+              -->
+        <collection property="goodsList" javaType="List"  column="fod_id"  ofType="cn.jjxy.pojo.Goods"
+                    select="cn.jjxy.mapper.GoodsMapper.getGoodsByOrderDetailId" fetchType="lazy">
+            <id property="goodsId" column="g_id"/>
+            <result property="goodsImg" column="g_img"/>
+            <result property="goodsName" column="g_name"/>
+            <result property="goodsDesc" column="g_desc"/>
+            <result property="goodsPrice" column="g_price"/>
+            <result property="goodsSell" column="g_sell"/>
+            <result property="goodsSurplus" column="g_surplus"/>
+        </collection>
+    </resultMap>
+    <select id="getGoodsByOrderDetailId" parameterType="int" resultMap="orderDetailToGoods">
+        SELECT *from f_orderDetail WHERE fod_id = #{id}
+    </select>
+
+    <!-- ====================================2、插入一条订单明细 ==============================================-->
+    <insert id="insertOneOrderDetail" parameterType="cn.jjxy.pojo.OrderDetailAdd">
+        INSERT INTO f_orderDetail(fod_goodsId,fod_f_orderId,fod_num) VALUES
+        (#{goodsId},#{orderId},#{orderDetailNum})
+    </insert>
+
+    <!--======================================3、删除一条订单级联删除一条订单细明==============================-->
+    <delete id="deleteOneOrderDetail" parameterType="int">
+          DELETE FROM f_orderDetail WHERE fod_f_orderId=#{oNum}
+    </delete>
+
+    <!--======================================4、根据订单编号插叙多条订单细明================================-->
+    <select id="getOrderDetailByOrderId" parameterType="int" resultMap="orderDetailResultMap">
+        SELECT *FROM f_orderDetail WHERE fod_f_orderId = #{orderId}
+    </select>
+</mapper>

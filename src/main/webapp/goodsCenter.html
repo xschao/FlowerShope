@@ -1,0 +1,395 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8" />
+    <title>产品中心-鲜花</title>
+    <link rel="stylesheet" type="text/css" href="css/goodsCenter.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link href="bootstrap-3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/home.css"/>
+    <style type="text/css">
+        /* 自定定义的样式 */
+        button.accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 5px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        button.accordion.active, button.accordion:hover {
+            background-color: #ddd;
+        }
+
+        div.panel {
+            padding: 0 5px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+        .accordion>a{
+            margin-left: 25px;
+        }
+        .accordion>a:hover{
+            text-decoration: none;
+        }
+        .panel>.cate-list{
+            margin-left: -20px;
+        }
+        .noline{
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<!-- 顶部导航 -->
+<div class="topNavbar">
+    <div class="nav">
+        <!--导航栏左端-->
+        <ul class="site-nav-l">
+            <li class="menu">
+                <a href="#"><span class="ico ico-star"></span>收藏小姐姐的花店</a>
+            </li>
+            <li class="menu dropdown">
+                <a href="#"><span class="ico ico-weixin"></span>关注微信</a>
+            </li>
+            <li class="menu dropdown">
+                <a href="#"><span class="ico ico-mobile"></span>小姐姐的花店app</a>
+            </li>
+        </ul>
+        <!--导航栏右端-->
+        <ul class="site-nav-r">
+            <li class="menu">
+                <a href="#">你好，请登录</a><a href="#" style="margin-left: 10px">注册</a>
+            </li>
+            <li class="site-nav-pipe">|</li>
+            <li class="menu">
+                <a href="#">订单查询</a>
+            </li>
+            <li class="site-nav-pipe">|</li>
+            <li class="menu dropdown">
+                <a href="#">我的花礼</a>
+            </li>
+            <li class="site-nav-pipe">|</li>
+            <li class="menu dropdown">
+                <a href="#">客户服务<span class="glyphicon glyphicon-triangle-bottom"></span></a>
+            </li>
+            <li class="site-nav-pipe">|</li>
+            <li class="menu dropdown">
+                <a href="#"><span class="ico ico-cart"></span>购物车<span
+                        class="glyphicon glyphicon-triangle-bottom"></span></a>
+                <div class="dropdown-menu dropdown-cart" id="CartInfo"></div>
+            </li>
+            <li class="site-nav-pipe">|</li>
+            <li class="menu slogan">
+                <a href="#"> 小姐姐的花店</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- 头部 登录部分-->
+<header>
+    <div class="logo">
+        <h1><a href="#">小姐姐的花店</a></h1>
+    </div>
+    <div class="search">
+        <form name="i_search" method="get" action="">
+            <div class="input-group">
+                <input name="keyword" type="text" class="form-control" placeholder="商品关键词">
+                <span class="input-group-btn">
+                        <button id="test" class="btn btn-primary" type="button" onClick="this.form.submit()">搜索</button>
+                </span>
+            </div>
+        </form>
+    </div>
+    <div class="service serviceDefault">
+        <span class="ico ico-phone"></span>0791-8316800
+        <a target="_blank" id="header-chat"><span class="ico ico-headset"></span>在线客服</a>
+    </div>
+
+</header>
+<!-- 中间导航部分  -->
+
+<nav class="navbar navbar-default">
+    <div class="container">
+        <ul class="nav nav_ul" id="no">
+            <li role="presentation" class="home_li"><a class="active" href="#">网站首页</a></li>
+            <li class="dropdown" id="ho"><a href="#" class="dropdown-toggle" >产品中心</a></li>
+            <li role="presentation"><a href="#">永生花</a></li>
+            <li role="presentation"><a href="#">绿值盆栽</a></li>
+            <li role="presentation"><a href="#">花语大全</a></li>
+            <li role="presentation"><a href="designer.html">设计师臻选</a></li>
+            <li role="presentation"><a href="liuyan.html">在线留言</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- 产品中心 -->
+<div class='g-document'>
+    <div class="g-main">
+        <div class="m-wg m-default m-default-default" id="visualmodule_1" style='width:207px;height:427px;float:left;border-style:none;border-width:0px;border-color:#333333;margin-left:0px;margin-right:0px;margin-top:10px;margin-bottom:10px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;'>
+            <div class="m-wg-hd">
+                <h2 style="margin-left: 40px">产品分类</h2>
+            </div>
+            <div class="m-wg-ct">
+                <div class="f-clear"></div>
+                <!-- 列表start -->
+                <div class="m-theme15" id="m-theme15">
+                    <ul>
+                        <li  class='noline'>
+                            <button class="accordion">   <a class='u-parent' href="#" id="u-parent1"> 用途</a></button>
+                            <div class="panel">
+                                <ul class="cate-list cate-list-inline">
+                                    <li><a href="#">爱情鲜花</a></li>
+                                    <li><a href="#">生日鲜花</a></li>
+                                    <li><a href="#">友情鲜花</a></li>
+                                    <li><a href="#">问候长辈</a></li>
+                                    <li><a href="#">探病慰问</a></li>
+                                    <li><a href="#">道歉鲜花</a></li>
+                                    <li><a href="#">祝贺鲜花</a></li>
+                                    <li><a href="#">婚庆鲜花</a></li>
+                                    <li><a href="#">商务鲜花</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="noline">
+                            <button class="accordion"><a class='u-parent' href="#" id="u-parent2"> 颜色</a></button>
+                            <div class="panel">
+                                <ul class="cate-list cate-list-inline">
+                                    <li><a href="#">红、粉、黄</a></li>
+                                    <li><a href="#">绿、蓝、白</a></li>
+                                    <li><a href="#">橙、紫、白</a></li>
+                                    <li><a href="#">粉红、紫红、橙黄</a></li>
+                                    <li><a href="#">橙红、豆绿、淡绿</a></li>
+                                    <li><a href="#">水绿、金黄、柠檬黄</a></li>
+                                    <li><a href="#">翡翠、曙色、粉黄</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="noline">
+                            <button class="accordion"> <a class='u-parent' href="#" id="u-parent3"> 价格</a></button>
+                            <div class="panel">
+                                <ul class="cate-list cate-list-inline">
+                                    <li><a href="#">&nbsp;&nbsp;0-&nbsp;99</a></li>
+                                    <li><a href="#">&nbsp;99-169</a></li>
+                                    <li><a href="#">169-269</a></li>
+                                    <li><a href="#">269-339</a></li>
+                                    <li><a href="#">339-499</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="noline">
+                            <button class="accordion"> <a class='u-parent' href="#" id="u-parent4"> 花材</a></button>
+                            <div class="panel">
+                                <ul class="cate-list cate-list-inline">
+                                    <li><a href="#">百合</a></li>
+                                    <li><a href="#">扶郎</a></li>
+                                    <li><a href="#">玫瑰</a></li>
+                                    <li><a href="#">康乃馨</a></li>
+                                    <li><a href="#">马蹄莲</a></li>
+                                    <li><a href="#">向日葵</a></li>
+                                    <li><a href="#">郁金香</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="noline">
+                            <button class="accordion"> <a class='u-parent' href="#" id="u-parent5"> 节日</a></button>
+                            <div class="panel">
+                                <ul class="cate-list cate-list-inline">
+                                    <li><a href="#">春节</a></li>
+                                    <li><a href="#">七夕</a></li>
+                                    <li><a href="#">重阳节</a></li>
+                                    <li><a href="#">中秋节</a></li>
+                                    <li><a href="#">国庆节</a></li>
+                                    <li><a href="#">教师节</a></li>
+                                    <li><a href="#">感恩节</a></li>
+                                    <li><a href="#">圣诞节</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="noline">
+                            <button class="accordion"> <a class='u-parent' href="#" id="u-parent6"> 花语</a></button>
+                            <div class="panel">
+                                <ul class="cate-list cate-list-inline">
+                                    <li><a href="#">花漾年华</a></li>
+                                    <li><a href="#">不负韶华</a></li>
+                                    <li><a href="#">一往情深</a></li>
+                                    <li><a href="#">浪漫的爱</a></li>
+                                    <li><a href="#">幸福甜蜜</a></li>
+                                    <li><a href="#">幸运幸福</a></li>
+                                    <li><a href="#">感谢遇见</a></li>
+                                    <li><a href="#">高贵纯洁</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="f-clear"></div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].onclick = function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight){
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                }
+            }
+        </script>
+
+        <!-- 普通中心模块 -->
+        <div class="m-wg m-default m-default-default" id="visualmodule_2" style='width:983px;height:auto;float:left;border-style:none;border-width:0px;border-color:#333333;margin-left:10px;margin-right:0px;margin-top:10px;margin-bottom:10px;padding-left:0px;padding-right:0px;padding-top:0px;padding-bottom:0px;'>
+            <div class="m-wg-hd">
+                <h2 style="margin-left: 40px">全部产品</h2>
+            </div>
+            <div class="m-wg-ct">
+                <!-- 图片栏目 1-->
+                <div class="m-theme1">
+                    <div class='f-clear'></div>
+                    <div class="m-theme1-list">
+                        <div class="m-theme1-img">
+                            <a href="#"  class="pro-1">
+                                <img class='lazyload' src="img/flowers_1.jpg" alt=""></a>
+                        </div>
+                        <div class="m-theme10-title" style="position:relative;">
+                            <a href="#" class="pro-1">产品1</a>
+                        </div>
+                    </div>
+                    <div class="m-theme1-list">
+                        <div class="m-theme1-img">
+                            <a href="#" class="pro-2" >
+                                <img class='lazyload' src="img/flowers_2.jpg" alt=""></a>
+                        </div>
+                        <div class="m-theme10-title" style="position:relative;">
+                            <a href="#" class="pro-2">产品2</a>
+                        </div>
+                    </div>
+                    <div class="m-theme1-list">
+                        <div class="m-theme1-img">
+                            <a href="#" class="pro-3">
+                                <img class='lazyload' src="img/flowers_3.jpg" alt=""></a>
+                        </div>
+                        <div class="m-theme10-title" style="position:relative;">
+                            <a href="#" class="pro-3">产品3</a>
+                        </div>
+                    </div>
+                    <div class="m-theme1-list">
+                        <div class="m-theme1-img">
+                            <a href="#" target="_blank">
+                                <img class='lazyload' src="img/flowers_4.jpg" alt=""></a>
+                        </div>
+                        <div class="m-theme10-title" style="position:relative;">
+                            <a href="#" target="_blank">产品4</a>
+                        </div>
+                    </div>
+                    <div class="m-theme1-list">
+                        <div class="m-theme1-img">
+                            <a href="#" target="_blank">
+                                <img class='lazyload' src="img/flowers_5.jpg" alt=""></a>
+                        </div>
+                        <div class="m-theme10-title" style="position:relative;">
+                            <a href="#" target="_blank">产品5</a>
+                        </div>
+                    </div>
+                    <div class="m-theme1-list">
+                        <div class="m-theme1-img">
+                            <a href="#" target="_blank">
+                                <img class='lazyload' src="img/flowers_6.jpg" alt=""></a>
+                        </div>
+                        <div class="m-theme10-title" style="position:relative;">
+                            <a href="#" target="_blank">产品6</a>
+                        </div>
+                    </div>
+                    <div class="m-theme1-list">
+                        <div class="m-theme1-img">
+                            <a href="#" target="_blank">
+                                <img class='lazyload' src="img/flowers_7.jpg" alt=""></a>
+                        </div>
+                        <div class="m-theme10-title" style="position:relative;">
+                            <a href="#" target="_blank">产品7</a>
+                        </div>
+                    </div>
+                    <div class="m-theme1-list">
+                        <div class="m-theme1-img">
+                            <a href="#" target="_blank">
+                                <img class='lazyload' src="img/flowers_8.jpg" alt=""></a>
+                        </div>
+                        <div class="m-theme10-title" style="position:relative;">
+                            <a href="#" target="_blank">产品8</a>
+                        </div>
+                    </div>
+
+                    <div class='f-clear'></div>
+                </div>
+                <!--图片栏目 1 END-->
+                <!--图片栏目 2-->
+                <div class="m-theme2">
+                    <div class='f-clear'></div>
+                    <div class="m-theme2-list">
+                        <div class="m-theme2-img">
+                            <a href="#" class="pro-9">
+                                <img class='lazyload' src="img/flowers_9.jpg" alt=""></a>
+                        </div>
+                        <div class="m-theme10-title" style="position:relative;">
+                            <a href="#" class="pro-9">产品9</a>
+                        </div>
+                    </div>
+                    <div class="m-theme2-list">
+                        <div class="m-theme2-img">
+                            <a href="goods_10.html" target="_blank">
+                                <img class='lazyload' src="img/flowers_10.jpg" alt=""></a>
+                        </div>
+                        <div class="m-theme10-title" style="position:relative;">
+                            <a href="goods_10.html" target="_blank">产品10</a>
+                        </div>
+                    </div>
+                    <div class="m-theme2-list">
+                        <div class="m-theme2-img">
+                            <a href="goods_11.html" target="_blank">
+                                <img class='lazyload' src="img/flowers_11.jpg" alt=""></a>
+                        </div>
+                        <div class="m-theme10-title" style="position:relative;">
+                            <a href="goods_11.html" target="_blank">产品11</a>
+                        </div>
+                    </div>
+                    <div class="m-theme2-list">
+                        <div class="m-theme2-img">
+                            <a href="#" target="_blank">
+                                <img class='lazyload' src="img/flowers_12.jpg" alt=""></a>
+                        </div>
+                        <div class="m-theme10-title" style="position:relative;">
+                            <a href="#" target="_blank">产品12</a>
+                        </div>
+                    </div>
+                    <div class="m-theme2-list">
+                        <div class="m-theme1-img">
+                            <a href="#" target="_blank">
+                                <img class='lazyload' src="img/flowers_13.jpg" alt=""></a>
+                        </div>
+                        <div class="m-theme10-title" style="position:relative;">
+                            <a href="#" target="_blank">产品13</a>
+                        </div>
+                    </div>
+                    <div class='f-clear'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

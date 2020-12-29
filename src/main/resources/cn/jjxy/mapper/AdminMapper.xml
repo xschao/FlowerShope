@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.jjxy.mapper.AdminMapper">
+    <!-- =====================================管理员管理============================================= -->
+    <select id="find_adminByNamePsd" parameterType="string" resultType="Boolean">
+        SELECT *from f_admin   where a_name = #{name} and a_psd = #{pwd}
+     </select>
+
+    <!--=======================================  一、用户管理模块   =======================================-->
+    <resultMap id="userResultMap" type="cn.jjxy.pojo.Users">
+        <result property="userId" column="u_id"/>
+        <result property="userName" column="u_name"/>
+        <result property="userPsd" column="u_psd"/>
+        <result property="userSex" column="u_sex"/>
+        <result property="UserTel" column="u_tel"/>
+        <result property="userBirthday" column="u_birthday"/>
+        <result property="uerAddress" column="u_address"/>
+    </resultMap>
+    <!-- 1、分页查询所用用户 -->
+    <select id="findAllUsersForPage" parameterType="int" resultMap="userResultMap">
+        SELECT *from f_users limit #{pageSize},#{pageNumber}
+    </select>
+    <!--2、查询所有记录数-->
+    <select id="findUsersCount" parameterType="int" resultType="int">
+        SELECT  count(*) FROM f_users
+    </select>
+    <!-- 2、查询所有的用户-->
+    <select id="findAllUsers" resultMap="userResultMap">
+        SELECT * FROM f_users
+    </select>
+</mapper>

@@ -1,0 +1,113 @@
+table,td,td{
+    border:1.5px solid #FF6600;
+    font-size:14px;
+}
+table{
+    display: block;
+}
+
+.goods>img{
+    float:left;
+    width: 20%;
+}
+tr{
+    text-align: center;
+}
+#box{
+}
+.box_cart{
+    width: 1050px;
+    margin-left: 120px;
+    margin-top: 40px;
+}
+#cart{
+    width: 1050px;
+    float:left;
+    border-collapse:collapse;
+}
+#head{
+    background:#F0FFFF;
+}
+#settlement{
+    margin-top:20px;
+    height:100px;
+    border:2px solid #EBEBEB;
+    float:left;
+    background: #EBEBEB;
+    font-size:10px;
+    line-height:100px ;
+    width:1050px;
+}
+#settlement div{
+    float:left;
+}
+#addupto{
+    color:#ff0000;
+    font-weight:700;
+}
+#NumofGoods{
+    color:#ff0000;
+    font-weight:700;
+}
+
+.goods{
+    padding:5px;
+    text-align: left;
+}
+.number{
+    position:relative;
+    left:20px;
+    width:80px;
+    height:20px;
+    border:2px solid #ccc;
+}
+
+.acc{
+    width:40px;
+    height:10px;
+    line-height: 10px;
+    float:left;
+}
+.desymbol{
+    width:20px;
+    height:20px;
+    line-height: 20px;
+    background:#ccc;
+    float:left;
+    cursor:pointer;
+    margin-top: -2px;
+}
+.adsymbol{
+    width:20px;
+    height:20px;
+    line-height: 20px;
+    background:#ccc;
+    float:right;
+    cursor: pointer;
+    margin-top: -2px;
+}
+/*.dele{
+    cursor: pointer;
+}*/
+.total{
+    color:#ff0000;
+    font-weight:700;
+}
+.acc{
+    margin-left: 10px;
+    width: 10px;
+    color: #ff0000;
+}
+.back{
+    margin-top: 10px;
+    margin-left: 20px;
+    font-weight:bold;
+    font-size: 16px;
+}
+.back>a:hover{
+    text-decoration: none;
+}
+.back>.active{
+    color: #ff0000;
+}
+
